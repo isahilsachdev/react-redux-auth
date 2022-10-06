@@ -2,12 +2,13 @@ import { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  // onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 import "./App.css";
 import { auth } from "./firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { getLoginFailure, getLoginSuccess } from "./Redux/action";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -15,7 +16,7 @@ function App() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
 
   const redirectToWeather = () => {
     navigate("/weather");
@@ -28,10 +29,10 @@ function App() {
         registerEmail,
         registerPassword
       );
-      console.log(user);
-      setUser({email: registerEmail})
+      dispatch(getLoginSuccess({registerEmail}))
       redirectToWeather();
     } catch (error) {
+      dispatch(getLoginFailure(error.message))
       console.log(error.message);
     }
   };
@@ -43,10 +44,10 @@ function App() {
         loginEmail,
         loginPassword
       );
-      console.log(user);
-      setUser({email: registerEmail})
+      dispatch(getLoginSuccess({loginEmail}))
       redirectToWeather()
     } catch (error) {
+      dispatch(getLoginFailure(error.message))
       console.log(error.message);
     }
   };
