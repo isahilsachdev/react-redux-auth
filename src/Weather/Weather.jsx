@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { auth } from '../firebaseConfig';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';

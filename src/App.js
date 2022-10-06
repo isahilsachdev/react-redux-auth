@@ -24,7 +24,7 @@ function App() {
 
   const register = async () => {
     try {
-      const user = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
@@ -39,7 +39,7 @@ function App() {
 
   const login = async () => {
     try {
-      const user = await signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
         loginEmail,
         loginPassword
