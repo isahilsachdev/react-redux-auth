@@ -6,9 +6,19 @@ export const RoutesPage = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<App />} />
-        <Route exact path='/weather' element={<Weather />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route
+          path="/weather"
+          element={
+            <Weather />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <App />
+          }
+        />
+        <Route path="*" element={<Navigate to="/weather" replace />} />
       </Routes>
     </BrowserRouter>
   );
