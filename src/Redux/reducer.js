@@ -6,7 +6,7 @@ const weatherData = {
   user: null,
 };
 
-export const weatherReducer = (state = weatherData, { type, payload }) => {
+export const weatherReducer = (state = weatherData, { type, payload, error }) => {
   switch (type) {
     case GET_WEATHER_SUCCESS:
       return {
@@ -17,7 +17,7 @@ export const weatherReducer = (state = weatherData, { type, payload }) => {
     case GET_WEATHER_FAILURE:
       return {
         ...state,
-        error: payload,
+        error,
       };
 
     case GET_LOGIN_SUCCESS:
@@ -29,7 +29,7 @@ export const weatherReducer = (state = weatherData, { type, payload }) => {
     case GET_LOGIN_FAILURE:
       return {
         ...state,
-        error: payload,
+        error,
       };
 
     case GET_LOGOUT_SUCCESS:

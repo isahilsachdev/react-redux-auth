@@ -8,7 +8,7 @@ import "./App.css";
 import { auth } from "./firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { getLoginFailure, getLoginSuccess } from "./Redux/action";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 function App() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -17,6 +17,7 @@ function App() {
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { error } = useSelector(state => state, shallowEqual);
 
   const redirectToWeather = () => {
     navigate("/weather");
@@ -92,7 +93,7 @@ function App() {
 
         <button onClick={login}> Login</button>
       </div>
-      <button onClick={logout}> Sign Out </button>
+      <p style={{ color: 'red'}}> {error} </p>
     </div>
   );
 }

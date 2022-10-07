@@ -64,7 +64,7 @@ const Weather = () => {
       <h1>Weather</h1>
       <div>
         {error ? (
-          <h4> { error }</h4>
+          <p style={{ color: 'red'}}> {error} </p>
           ) : (
             <>
             <div>
@@ -90,11 +90,11 @@ const Weather = () => {
                   <h5>Area name - {data.name}</h5>
                   <div>
                     <h5>Weather</h5>
-                    {data.weather.map((info) => (
-                      <div>  
+                    {data.weather.map((info, i) => (
+                      <div key={i}>
                         {
                           Object.keys(info).map(key => (
-                            <div>
+                            <div key={key}>
                               {key} - {info[key]}
                             </div>
                           ))
@@ -105,8 +105,8 @@ const Weather = () => {
                   
                   <div>
                     <h5>Wind</h5>
-                    {Object.keys(data.wind).map((info) => (
-                      <div>  
+                    {Object.keys(data.wind).map((info, i) => (
+                      <div key={i}>  
                         {info} - {data.wind[info]}
                       </div>
                     ))}
@@ -114,8 +114,8 @@ const Weather = () => {
 
                   <div>
                     <h5>Temperature</h5>
-                    {Object.keys(data.main).map((info) => (
-                      <div>  
+                    {Object.keys(data.main).map((info, i) => (
+                      <div key={i}>  
                         {info} - {data.main[info]}
                       </div>
                     ))}
