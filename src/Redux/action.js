@@ -6,10 +6,9 @@ export const GET_LOGIN_SUCCESS = "GET_LOGIN_SUCCESS";
 export const GET_LOGIN_FAILURE = "GET_LOGIN_FAILURE";
 export const GET_LOGOUT_SUCCESS = "GET_LOGOUT_SUCCESS";
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY || '02137b951a35cb6da2cb52d4573a96ca'
 
 const getWeatherSuccess = payload => {
-  console.log('getWeatherSuccess', payload);
   return {
     type: GET_WEATHER_SUCCESS,
     payload

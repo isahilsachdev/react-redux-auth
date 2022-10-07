@@ -33,7 +33,6 @@ function App() {
       redirectToWeather();
     } catch (error) {
       dispatch(getLoginFailure(error.message))
-      console.log(error.message);
     }
   };
 
@@ -48,7 +47,6 @@ function App() {
       redirectToWeather()
     } catch (error) {
       dispatch(getLoginFailure(error.message))
-      console.log(error.message);
     }
   };
 
