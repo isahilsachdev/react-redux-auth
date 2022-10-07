@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
 } from "firebase/auth";
 import "./App.css";
 import { auth } from "./firebaseConfig";
@@ -51,10 +50,6 @@ function App() {
       dispatch(getLoginFailure(error.message))
       console.log(error.message);
     }
-  };
-
-  const logout = async () => {
-    await signOut(auth);
   };
 
   return (
